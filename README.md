@@ -30,7 +30,7 @@ Bataille Navale est une version classique du jeu de stratégie maritime où les 
 
 Pour compiler et exécuter le jeu, utilisez un compilateur C++ standard et exécutez la commande appropriée dans votre terminal ou IDE.
 
-## Contribution
+### Contribution
 
 Contributions bienvenues. Pour proposer des améliorations, créez une pull request.
 
@@ -68,7 +68,7 @@ Battleship is a classic version of the maritime strategy game where players plac
 
 To compile and run the game, use a standard C++ compiler and execute the appropriate command in your terminal or IDE.
 
-## Contribution
+### Contribution
 
 Contributions welcome. To suggest improvements, create a pull request.
 
