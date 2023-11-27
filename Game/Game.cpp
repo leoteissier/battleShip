@@ -15,10 +15,12 @@ Game::Game() : ai(), player() {
     std::cout << "Bienvenue dans le jeu de bataille navale!" << std::endl;
     choisirNombreDeNavires(); // Définissez le nombre de navires ici
 
+    const int gridSize = 5 + nombreDeNavires * 3 - 3;
+
     // Créez les plateaux de jeu avec la taille appropriée
-    playerBoard = std::make_unique<Board>(5 + nombreDeNavires * 3 - 3);
-    aiBoard = std::make_unique<Board>(5 + nombreDeNavires * 3 - 3);
-    displayBoardForAI = std::make_unique<Board>(5 + nombreDeNavires * 3 - 3);
+    playerBoard = std::make_unique<Board>(gridSize);
+    aiBoard = std::make_unique<Board>(gridSize);
+    displayBoardForAI = std::make_unique<Board>(gridSize);
 
     std::cout << "Veuillez placer vos navires." << std::endl;
     Player::placerNavires(*playerBoard, nombreDeNavires);
