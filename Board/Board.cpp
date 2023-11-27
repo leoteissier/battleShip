@@ -1,15 +1,7 @@
+#include <sstream>
 #include "Board.h"
 
 Board::Board(int size) : gridSize(size), grid(size, std::vector<char>(size, '~')) {}
-
-void Board::display() const {
-    for (const auto &row : grid) {
-        for (char cell : row) {
-            std::cout << cell << " ";
-        }
-        std::cout << std::endl;
-    }
-}
 
 void Board::placeShip(int startX, int startY, int taille) {
     // Assumer une orientation horizontale ou verticale basée sur la taille
@@ -75,19 +67,6 @@ bool Board::verifierCoordonnees(int debutX, int debutY, int finX, int finY, int 
     return true;
 }
 
-void Board::displayForOpponent() const {
-    for (const auto& row : grid) {
-        for (char cell : row) {
-            if (cell == 'S') { // Navire non touché
-                std::cout << '~' << " "; // Affiche '~' pour cacher le navire
-            } else {
-                std::cout << cell << " "; // Affiche l'état actuel pour les autres cases
-            }
-        }
-        std::cout << std::endl;
-    }
-}
-
 bool Board::attack(int x, int y) {
     if (grid[x][y] == 'S') { // 'S' représente un navire
         grid[x][y] = 'X'; // Marquer comme touché
@@ -102,6 +81,14 @@ void Board::updateCell(int x, int y, char status) {
     if (x >= 0 && x < gridSize && y >= 0 && y < gridSize) {
         grid[x][y] = status;
     }
+}
+
+std::string Board::getLine(int line) const {
+    std::stringstream ss;
+    for (char cell : grid[line]) {
+        ss << cell << " ";
+    }
+    return ss.str();
 }
 
 int Board::getSize() const {

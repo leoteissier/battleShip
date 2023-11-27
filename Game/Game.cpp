@@ -34,12 +34,12 @@ void Game::start() {
     while (true) {
         if (isPlayerTurn) {
             // Affichage du plateau du joueur
-            std::cout << "\nPlateau du Joueur:\n";
-            playerBoard->display();
-
-            // Affichage du plateau de l'IA tel que connu par le joueur
-            std::cout << "\nPlateau de l'IA:\n";
-            displayBoardForAI->display();
+            std::cout << "\n";
+            for (int i = 0; i < playerBoard->getSize(); ++i) {
+                std::string playerLine = playerBoard->getLine(i);
+                std::string aiLine = displayBoardForAI->getLine(i);
+                std::cout << playerLine << " | " << aiLine << std::endl;
+            }
 
             // Tour du joueur
             std::cout << "Entrez les coordonnees de votre attaque (x y): ";
