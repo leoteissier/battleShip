@@ -1,6 +1,7 @@
 #include "Game.h"
 #include <iostream>
 
+
 void Game::choisirNombreDeNavires() {
     std::cout << "Choisissez le nombre de navires (1-5):";
     std::cin >> nombreDeNavires;
@@ -15,8 +16,8 @@ Game::Game() : ai(), player() {
     choisirNombreDeNavires(); // Définissez le nombre de navires ici
 
     // Créez les plateaux de jeu avec la taille appropriée
-    playerBoard = std::make_unique<Board>(nombreDeNavires * 5);
-    aiBoard = std::make_unique<Board>(nombreDeNavires * 5);
+    playerBoard = std::make_unique<Board>(5 + nombreDeNavires * 3 - 3);
+    aiBoard = std::make_unique<Board>(5 + nombreDeNavires * 5 - 3);
 
     std::cout << "Veuillez placer vos navires." << std::endl;
     Player::placerNavires(*playerBoard, nombreDeNavires);
