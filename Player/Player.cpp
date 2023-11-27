@@ -24,8 +24,8 @@ void Player::placerNavire(Board& board, const std::string &type, int taille) {
 
 void Player::placerNavires(Board& board, int nombreDeNavires) {
     int gridSize = board.getSize();
-    std::cout << "La grille fait " << gridSize << " de taille" << std::endl;
     std::cout << "Vous avez " << nombreDeNavires << " navires a placer." << std::endl;
+    std::cout << "La grille fait " << gridSize << " de taille (0:"<< gridSize - 1 << ")" << std::endl;
 
     // Placez les navires un par un
     if (nombreDeNavires > 0) placerNavire(board, "Croiseur", 3);

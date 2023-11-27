@@ -59,7 +59,7 @@ bool Board::verifierCoordonnees(int debutX, int debutY, int finX, int finY, int 
         int x = memeLigne ? debutX + i : debutX;
         int y = memeLigne ? debutY : debutY + i;
         if (grid[x][y] != '~') {
-            std::cout << "Les coordonnees sont dejà occupees." << std::endl;
+            std::cout << "Les coordonnees sont deja occupees." << std::endl;
             return false;
         }
     }
