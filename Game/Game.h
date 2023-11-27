@@ -11,6 +11,7 @@ class Game {
     AI ai;
     Player player;
     std::unique_ptr<Board> playerBoard, aiBoard;
+    std::unique_ptr<Board> displayBoardForAI;
 
 public:
     Game();

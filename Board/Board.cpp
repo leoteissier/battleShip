@@ -75,23 +75,43 @@ bool Board::verifierCoordonnees(int debutX, int debutY, int finX, int finY, int 
     return true;
 }
 
-int Board::getSize() const {
-    return gridSize;
+void Board::displayForOpponent() const {
+    for (const auto& row : grid) {
+        for (char cell : row) {
+            if (cell == 'S') { // Navire non touché
+                std::cout << '~' << " "; // Affiche '~' pour cacher le navire
+            } else {
+                std::cout << cell << " "; // Affiche l'état actuel pour les autres cases
+            }
+        }
+        std::cout << std::endl;
+    }
 }
 
 bool Board::attack(int x, int y) {
-    if (grid[x][y] == 'S') {
-        grid[x][y] = 'X';
+    if (grid[x][y] == 'S') { // 'S' représente un navire
+        grid[x][y] = 'X'; // Marquer comme touché
         return true;
+    } else if (grid[x][y] == '~') { // '~' représente une case vide
+        grid[x][y] = 'O'; // Marquer comme manqué
     }
-    grid[x][y] = 'O';
     return false;
+}
+
+void Board::updateCell(int x, int y, char status) {
+    if (x >= 0 && x < gridSize && y >= 0 && y < gridSize) {
+        grid[x][y] = status;
+    }
+}
+
+int Board::getSize() const {
+    return gridSize;
 }
 
 bool Board::areAllShipsSunk() const {
     for (const auto &row : grid) {
         for (char cell : row) {
-            if (cell == 'S') {
+            if (cell == 'S') { // S'il reste des navires non touchés
                 return false;
             }
         }
@@ -102,4 +122,6 @@ bool Board::areAllShipsSunk() const {
 char Board::getCell(int x, int y) const {
     return grid[x][y];
 }
+
+
 
