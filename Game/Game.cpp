@@ -42,7 +42,7 @@ void Game::start() {
             }
 
             // Tour du joueur
-            std::cout << "Entrez les coordonnees de votre attaque (x y): ";
+            std::cout << "Entrez les coordonnees de votre attaque (x y):";
             std::cin >> x >> y;
 
             // Vérifier la validité des coordonnées
@@ -57,6 +57,7 @@ void Game::start() {
 
                 // Vérifier si le joueur a gagné
                 if (aiBoard->areAllShipsSunk()) {
+                    std::cout << "\n";
                     std::cout << "Felicitations! Vous avez gagne!" << std::endl;
                     break;
                 }
@@ -72,6 +73,7 @@ void Game::start() {
 
             // Vérifier si l'IA a gagné
             if (playerBoard->areAllShipsSunk()) {
+                std::cout << "\n";
                 std::cout << "Vous avez perdu. Tous vos navires ont ete coules!" << std::endl;
                 break;
             }
@@ -79,6 +81,12 @@ void Game::start() {
 
         // Changer de tour
         isPlayerTurn = !isPlayerTurn;
+    }
+
+    for (int i = 0; i < playerBoard->getSize(); ++i) {
+        std::string playerLine = playerBoard->getLine(i);
+        std::string aiLine = displayBoardForAI->getLine(i);
+        std::cout << playerLine << " | " << aiLine << std::endl;
     }
 
     std::cout << "Jeu termine!" << std::endl;
